@@ -41,6 +41,9 @@ public class EntityRigidbody : MonoBehaviour
     [SerializeField]
     private bool _static;
 
+    /// <summary>
+    /// Override <see cref="OnAwake"/> instead.
+    /// </summary>
     protected void Awake()
     {
         Native = GetComponent<Rigidbody>();
@@ -50,6 +53,9 @@ public class EntityRigidbody : MonoBehaviour
 
     protected virtual void OnAwake() { }
 
+    /// <summary>
+    /// Override <see cref="OnStart"/> instead.
+    /// </summary>
     protected void Start()
     {
         Native.useGravity = true;
