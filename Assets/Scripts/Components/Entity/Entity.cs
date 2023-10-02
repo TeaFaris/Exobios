@@ -40,4 +40,6 @@ public abstract class Entity : MonoBehaviour
 
         OnSpawn.Invoke(this, new());
     }
+
+    public override string ToString() => name;
 }
