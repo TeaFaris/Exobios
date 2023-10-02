@@ -4,14 +4,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New " + nameof(Keybind), menuName = nameof(Keybind))]
 public sealed class Keybind : ScriptableObject
 {
-    [SerializeField]
-    public readonly KeyCode DefaultKey;
+    public KeyCode DefaultKey;
 
-    [SerializeField, ReadOnlyProperty]
+    [field: SerializeField, ReadOnlyProperty]
     public KeyCode? Key { get; private set; } = null;
 
-    [SerializeField]
-    public readonly string ActionCode;
+    public string ActionCode;
 
     public Keybind(string actionCode, KeyCode defaultKey)
     {

@@ -71,6 +71,4 @@ public sealed class KeybindSystem : ITickable, IFixedTickable
             keybind.FixedTick();
         }
     }
-
-    private KeybindSystem() { }
 }
