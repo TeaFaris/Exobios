@@ -6,15 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Entity : MonoBehaviour
 {
-    protected event EventHandler<SpawnArgs> OnSpawn = delegate { };
-    protected event EventHandler<DamageArgs> OnTakeDamage = delegate { };
-    protected event EventHandler<DamageArgs> OnHeal = delegate { };
-    protected event EventHandler<InteractArgs> OnInteract = delegate { };
-    protected event EventHandler<CollisionArgs> OnEnterCollision = delegate { };
-    protected event EventHandler<CollisionArgs> OnExitCollision = delegate { };
-    protected event EventHandler<CollisionArgs> OnStayCollision = delegate { };
-    protected event EventHandler<DamageArgs> OnDeath = delegate { };
-    
+    public event EventHandler<SpawnArgs> OnSpawn = delegate { };
+    public event EventHandler<DamageArgs> OnTakeDamage = delegate { };
+    public event EventHandler<DamageArgs> OnHeal = delegate { };
+    public event EventHandler<InteractArgs> OnInteract = delegate { };
+    public event EventHandler<CollisionArgs> OnEnterCollision = delegate { };
+    public event EventHandler<CollisionArgs> OnExitCollision = delegate { };
+    public event EventHandler<CollisionArgs> OnStayCollision = delegate { };
+    public event EventHandler<DamageArgs> OnDeath = delegate { };
 
     [Header("Health settings")]
     public bool Invulnerable = false;

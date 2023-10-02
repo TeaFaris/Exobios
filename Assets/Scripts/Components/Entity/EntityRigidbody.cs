@@ -41,13 +41,21 @@ public class EntityRigidbody : MonoBehaviour
     [SerializeField]
     private bool _static;
 
-    private void Awake()
+    protected void Awake()
     {
         Native = GetComponent<Rigidbody>();
+
+        OnAwake();
     }
 
-    private void Start()
+    protected virtual void OnAwake() { }
+
+    protected void Start()
     {
         Native.useGravity = true;
+
+        OnStart();
     }
+
+    protected virtual void OnStart() { }
 }
