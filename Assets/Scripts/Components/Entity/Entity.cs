@@ -36,6 +36,11 @@ public abstract class Entity : MonoBehaviour
         {
             _health = value;
 
+            if(_health > FullHealth)
+            {
+                _health = FullHealth;
+            }
+
             if (Invulnerable)
             {
                 return;
@@ -69,6 +74,35 @@ public abstract class Entity : MonoBehaviour
     protected void OnCollisionStay(Collision collision)
     {
         OnStayCollision.Invoke(this, new CollisionArgs(collision));
+    }
+
+    public void Damage(object sender, DamageArgs damageArgs)
+    {
+        if (Invulnerable)
+        {
+            return;
+        }
+
+        _health -= Mathf.Abs(damageArgs.Value);
+
+        OnTakeDamage.Invoke(sender, damageArgs);
+
+        if (_health <= 0)
+        {
+            OnDeath.Invoke(this, damageArgs);
+        }
+    }
+
+    public void Heal(object sender, DamageArgs healArgs)
+    {
+        Health += Mathf.Abs(healArgs.Value);
+
+        OnHeal.Invoke(sender, healArgs);
+    }
+    
+    public void Interact(object sender, InteractArgs interactArgs)
+    {
+        OnInteract.Invoke(sender, interactArgs);
     }
 
     public override string ToString() => name;
