@@ -29,7 +29,24 @@ public abstract class Entity : MonoBehaviour
     [ReadOnlyProperty]
     private float _health;
 
-    // TODO: public float Health
+    public float Health
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+
+            if (Invulnerable)
+            {
+                return;
+            }
+
+            if (_health <= 0)
+            {
+                OnDeath.Invoke(this, new(0, new DamageSource(this, this, "{0} was killed.")));
+            }
+        }
+    }
 
     /// <summary>
     /// Use <see cref="OnSpawn"/> event.
@@ -39,6 +56,19 @@ public abstract class Entity : MonoBehaviour
         _health = FullHealth;
 
         OnSpawn.Invoke(this, new());
+    }
+
+    protected void OnCollisionEnter(Collision collision)
+    {
+        OnEnterCollision.Invoke(this, new CollisionArgs(collision));
+    }
+    protected void OnCollisionExit(Collision collision)
+    {
+        OnExitCollision.Invoke(this, new CollisionArgs(collision));
+    }
+    protected void OnCollisionStay(Collision collision)
+    {
+        OnStayCollision.Invoke(this, new CollisionArgs(collision));
     }
 
     public override string ToString() => name;
