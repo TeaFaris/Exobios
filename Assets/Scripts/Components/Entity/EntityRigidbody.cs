@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -6,9 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class EntityRigidbody : MonoBehaviour
 {
+    [HideInInspector]
     public Rigidbody Native;
 
-    [field: SerializeField]
+    /// <summary>
+    /// <see cref="Static"/> from inspector doesn't work, however in code it does, so use this property freely.
+    /// </summary>
     public bool Static
     {
         get => _static;
@@ -33,6 +37,8 @@ public class EntityRigidbody : MonoBehaviour
         }
     }
 
+    [InspectorLabel("Static (Works only before execution)")]
+    [SerializeField]
     private bool _static;
 
     private void Awake()
