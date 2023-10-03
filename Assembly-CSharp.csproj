@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Models\EntitySystem\DamageSource.cs" />
     <Compile Include="Assets\Scripts\Services\KeybindSystem\KeybindSystem.cs" />
     <Compile Include="Assets\Scripts\Extensions\TraceExtensions.cs" />
+    <Compile Include="Assets\Scripts\Components\Player\PlayerEntity.cs" />
     <Compile Include="Assets\Scripts\Models\KeybindSystem\Keybind.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\DamageArgs.cs" />
   </ItemGroup>

@@ -53,6 +53,16 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
+    protected abstract void SetProperties();
+
+    /// <summary>
+    /// Override <see cref="SetProperties"/> instead.
+    /// </summary>
+    protected void Awake()
+    {
+        
+    }
+
     /// <summary>
     /// Use <see cref="OnSpawn"/> event.
     /// </summary>
