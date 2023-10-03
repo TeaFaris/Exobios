@@ -66,9 +66,13 @@
     <Compile Include="Assets\Scripts\Components\Entity\EntityRigidbody.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\SpawnArgs.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\CollisionArgs.cs" />
+    <Compile Include="Assets\Scripts\Extensions\PhysicsExtensions.cs" />
     <Compile Include="Assets\Scripts\Models\KeybindSystem\AxisArgs.cs" />
+    <Compile Include="Assets\Scripts\Extensions\VectorExtensions.cs" />
+    <Compile Include="Assets\Scripts\Models\Trace\Trace.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\DamageSource.cs" />
     <Compile Include="Assets\Scripts\Services\KeybindSystem\KeybindSystem.cs" />
+    <Compile Include="Assets\Scripts\Extensions\TraceExtensions.cs" />
     <Compile Include="Assets\Scripts\Models\KeybindSystem\Keybind.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\DamageArgs.cs" />
   </ItemGroup>
