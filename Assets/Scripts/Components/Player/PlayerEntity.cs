@@ -3,6 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerRigidbody))]
 public sealed class PlayerEntity : Entity
 {
+    [ReadOnlyProperty]
+    public Prop HoldingProp;
+
     [Header("Movement settings")]
     public float MaxSpeed = 6f;
 

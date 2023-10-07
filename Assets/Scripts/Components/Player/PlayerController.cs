@@ -4,9 +4,6 @@ using Zenject;
 [RequireComponent(typeof(PlayerMovement))]
 public sealed class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    [ReadOnlyProperty]
-    private Prop holdingProp;
     private float previousDrag;
     private float previousAngularDrag;
     private bool rotateMode;
@@ -31,7 +28,7 @@ public sealed class PlayerController : MonoBehaviour
     {
         playerEntity = GetComponent<PlayerEntity>();
         playerRigidbody = GetComponent<PlayerRigidbody>();
-        playerCamera = GetComponent<PlayerCamera>();
+        playerCamera = GetComponentInChildren<PlayerCamera>();
         _camera = GetComponentInChildren<Camera>();
 
         sensitivity = new Vector3(
@@ -64,18 +61,18 @@ public sealed class PlayerController : MonoBehaviour
 
     private void RotateDown(object sender, System.EventArgs e)
     {
-        if(holdingProp == null)
+        if(playerEntity.HoldingProp == null)
         {
             return;
         }
 
-        var propRigid = holdingProp.GetComponent<Rigidbody>();
+        var propRigid = playerEntity.HoldingProp.GetComponent<Rigidbody>();
 
         rotateMode = true;
         playerCamera.LockCameraRotation = true;
 
         previousAngularDrag = propRigid.angularDrag;
-        propRigid.angularDrag = MovementConstants.DragPower / propRigid.mass;
+        propRigid.angularDrag = MovementConstants.DragPower / propRigid.mass / 10f;
     }
 
     private void RotatePressed(object sender, AxisArgs e)
@@ -85,7 +82,7 @@ public sealed class PlayerController : MonoBehaviour
             return;
         }
 
-        var propRigid = holdingProp.GetComponent<Rigidbody>();
+        var propRigid = playerEntity.HoldingProp.GetComponent<Rigidbody>();
 
         float x = Mathf.Clamp(-e.X * sensitivity.x, -20f, 20f);
         float y = Mathf.Clamp(-e.Y * sensitivity.y, -20f, 20f);
@@ -97,12 +94,12 @@ public sealed class PlayerController : MonoBehaviour
 
     private void RotateUp(object sender, System.EventArgs e)
     {
-        if (holdingProp == null)
+        if (playerEntity.HoldingProp == null)
         {
             return;
         }
         
-        var propRigid = holdingProp.GetComponent<Rigidbody>();
+        var propRigid = playerEntity.HoldingProp.GetComponent<Rigidbody>();
 
         propRigid.angularDrag = previousAngularDrag;
 
@@ -112,20 +109,20 @@ public sealed class PlayerController : MonoBehaviour
 
     private void UseUpdate()
     {
-        if(holdingProp == null)
+        if(playerEntity.HoldingProp == null)
         {
             return;
         }
 
-        var holdingPropRigid = holdingProp.GetComponent<EntityRigidbody>();
+        var HoldingPropRigid = playerEntity.HoldingProp.GetComponent<EntityRigidbody>();
         
-        var mass = holdingPropRigid.Native.mass;
+        var mass = HoldingPropRigid.Native.mass;
 
         if(mass < MovementConstants.HeavyProp)
         {
-            var distance = Vector3.Distance(transform.position, holdingProp.transform.position);
+            var distance = Vector3.Distance(transform.position, playerEntity.HoldingProp.transform.position);
 
-            var belowPlayer = playerRigidbody.Ground == holdingProp.transform;
+            var belowPlayer = playerRigidbody.Ground == playerEntity.HoldingProp.transform;
 
             if(distance > playerEntity.MaxHeldDistance || belowPlayer)
             {
@@ -145,18 +142,18 @@ public sealed class PlayerController : MonoBehaviour
                 massModifier = 2;
             }
 
-            var propDistance = objectHeldPoint.position - holdingProp.transform.position;
+            var propDistance = objectHeldPoint.position - playerEntity.HoldingProp.transform.position;
 
             var wishVelocity = propDistance / (Time.fixedDeltaTime * mass * massModifier);
-            var force = wishVelocity - holdingPropRigid.Native.velocity;
+            var force = wishVelocity - HoldingPropRigid.Native.velocity;
 
-            holdingPropRigid.Native.AddForce(force);
+            HoldingPropRigid.Native.AddForce(force);
         }
     }
 
     private void OnUseDown(object sender, System.EventArgs e)
     {
-        if (holdingProp != null)
+        if (playerEntity.HoldingProp != null)
         {
             DropProp();
             return;
@@ -173,7 +170,7 @@ public sealed class PlayerController : MonoBehaviour
                 return;
             }
 
-            holdingProp = raycastedProp;
+            playerEntity.HoldingProp = raycastedProp;
             propRigid.Native.useGravity = false;
 
             previousDrag = nativePropRigid.drag;
@@ -185,7 +182,7 @@ public sealed class PlayerController : MonoBehaviour
 
     private void DropProp()
     {
-        var propRigid = holdingProp.GetComponent<EntityRigidbody>();
+        var propRigid = playerEntity.HoldingProp.GetComponent<EntityRigidbody>();
 
         rotateMode = false;
 
@@ -194,31 +191,31 @@ public sealed class PlayerController : MonoBehaviour
 
         propRigid.Native.useGravity = true;
 
-        holdingProp.Interact(this, new InteractArgs(playerEntity));
+        playerEntity.HoldingProp.Interact(this, new InteractArgs(playerEntity));
 
-        holdingProp = null;
+        playerEntity.HoldingProp = null;
     }
 
     private void OnUsePressed(object sender, System.EventArgs e)
     {
-        if(holdingProp == null)
+        if(playerEntity.HoldingProp == null)
         {
             return;
         }
 
-        var propRigid = holdingProp.GetComponent<EntityRigidbody>();
+        var propRigid = playerEntity.HoldingProp.GetComponent<EntityRigidbody>();
 
         if(propRigid.Native.mass >= 25)
         {
-            if(Vector3.Distance(transform.position, holdingProp.transform.position) > playerEntity.MaxHeldDistance)
+            if(Vector3.Distance(transform.position, playerEntity.HoldingProp.transform.position) > playerEntity.MaxHeldDistance)
             {
                 DropProp();
                 return;
             }
 
-            var wishPosition = new Vector3(objectHeldPoint.position.x, holdingProp.transform.position.y, objectHeldPoint.position.z);
+            var wishPosition = new Vector3(objectHeldPoint.position.x, playerEntity.HoldingProp.transform.position.y, objectHeldPoint.position.z);
 
-            var lerpedPosition = Vector3.Lerp(holdingProp.transform.position, wishPosition, Time.fixedDeltaTime * (10f / propRigid.Native.mass));
+            var lerpedPosition = Vector3.Lerp(playerEntity.HoldingProp.transform.position, wishPosition, Time.fixedDeltaTime * (10f / propRigid.Native.mass));
 
             propRigid.Native.MovePosition(lerpedPosition);
         }
@@ -226,12 +223,12 @@ public sealed class PlayerController : MonoBehaviour
 
     private void OnUseUp(object sender, System.EventArgs e)
     {
-        if(holdingProp == null)
+        if(playerEntity.HoldingProp == null)
         {
             return;
         }
 
-        var propRigid = holdingProp.GetComponent<EntityRigidbody>();
+        var propRigid = playerEntity.HoldingProp.GetComponent<EntityRigidbody>();
         
         if(propRigid.Native.mass >= 25)
         {
