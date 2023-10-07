@@ -86,9 +86,12 @@ public sealed class PlayerMovement : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawSphere(groundCheckPosition.position, _collider.radius);
+        if(_collider != null)
+        {
+            Gizmos.color = Color.red;
+            
+            Gizmos.DrawSphere(groundCheckPosition.position, _collider.radius);
+        }
     }
 #endif
 

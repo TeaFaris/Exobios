@@ -12,6 +12,12 @@ public sealed class PlayerEntity : Entity
 
     public float JumpPower = 5.112f;
 
+    public float MaxGrabDistance = 3f;
+
+    public float MaxHeldDistance = 6f;
+
+    public float PushForce = 20f;
+
     protected override void SetProperties()
     {
         Invulnerable = false;

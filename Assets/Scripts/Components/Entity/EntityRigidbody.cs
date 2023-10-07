@@ -112,7 +112,7 @@ public class EntityRigidbody : MonoBehaviour
         {
             var contactPoint = contactPointsTrace[i];
 
-            var magnitude = contactPoint.impulse.magnitude / 2f;
+            var magnitude = contactPoint.impulse.magnitude / 4f;
 
             Gizmos.DrawCube(contactPoint.point, new Vector3(magnitude, magnitude, magnitude));
         }
