@@ -118,37 +118,27 @@ public sealed class PlayerController : MonoBehaviour
         
         var mass = HoldingPropRigid.Native.mass;
 
-        if(mass < MovementConstants.HeavyProp)
+        if (mass >= MovementConstants.HeavyProp)
         {
-            var distance = Vector3.Distance(transform.position, playerEntity.HoldingProp.transform.position);
-
-            var belowPlayer = playerRigidbody.Ground == playerEntity.HoldingProp.transform;
-
-            if(distance > playerEntity.MaxHeldDistance || belowPlayer)
-            {
-                DropProp();
-                return;
-            }
-
-
-            float massModifier = 1;
-
-            if(mass < 0.5f)
-            {
-                massModifier = 4;
-            }
-            else if(mass < 1)
-            {
-                massModifier = 2;
-            }
-
-            var propDistance = objectHeldPoint.position - playerEntity.HoldingProp.transform.position;
-
-            var wishVelocity = propDistance / (Time.fixedDeltaTime * mass * massModifier);
-            var force = wishVelocity - HoldingPropRigid.Native.velocity;
-
-            HoldingPropRigid.Native.AddForce(force);
+            return;
         }
+        
+        var distance = Vector3.Distance(transform.position, playerEntity.HoldingProp.transform.position);
+
+        var belowPlayer = playerRigidbody.Ground == playerEntity.HoldingProp.transform;
+
+        if(distance > playerEntity.MaxHeldDistance || belowPlayer)
+        {
+            DropProp();
+            return;
+        }
+
+        var propDistance = objectHeldPoint.position - playerEntity.HoldingProp.transform.position;
+
+        var wishVelocity = propDistance / (Time.fixedDeltaTime * mass);
+        var force = wishVelocity - HoldingPropRigid.Native.velocity;
+
+        HoldingPropRigid.Native.AddForce(force);
     }
 
     private void OnUseDown(object sender, System.EventArgs e)
