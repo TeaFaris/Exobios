@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{88BA0B45-9AA6-6202-03AF-FF2BAAC34726}</ProjectGuid>
+    <ProjectGuid>{6F253082-B9F4-AD33-CA6C-A145FF6EACA4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -48,7 +48,7 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.18</UnityProjectGeneratorVersion>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2022.3.5f1</UnityVersion>
   </PropertyGroup>
@@ -58,34 +58,14 @@
     <Analyzer Include="E:\Programs\Unity\2022.3.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Components\Player\PlayerCamera.cs" />
-    <Compile Include="Assets\Resources\Constants\PlayerPrefsConstants.cs" />
-    <Compile Include="Assets\Scripts\Components\Entity\Entity.cs" />
-    <Compile Include="Assets\Resources\Constants\InputConstants.cs" />
-    <Compile Include="Assets\Scripts\Extensions\FlagExtensions.cs" />
-    <Compile Include="Assets\Scripts\Models\EntitySystem\InteractArgs.cs" />
-    <Compile Include="Assets\Scripts\Inspector\ReadOnlyProperty\ReadOnlyPropertyAttribute.cs" />
-    <Compile Include="Assets\Scripts\Components\Entity\EntityRigidbody.cs" />
-    <Compile Include="Assets\Scripts\Models\EntitySystem\SpawnArgs.cs" />
-    <Compile Include="Assets\Scripts\Models\EntitySystem\CollisionArgs.cs" />
-    <Compile Include="Assets\Scripts\Components\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Extensions\PhysicsExtensions.cs" />
-    <Compile Include="Assets\Scripts\Components\Player\PlayerRigidbody.cs" />
-    <Compile Include="Assets\Scripts\Models\KeybindSystem\AxisArgs.cs" />
-    <Compile Include="Assets\Scripts\Extensions\VectorExtensions.cs" />
-    <Compile Include="Assets\Resources\Constants\MovementConstants.cs" />
-    <Compile Include="Assets\Scripts\Models\Trace\Trace.cs" />
-    <Compile Include="Assets\Scripts\Components\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\Models\EntitySystem\DamageSource.cs" />
-    <Compile Include="Assets\Resources\Constants\ActionCodes.cs" />
-    <Compile Include="Assets\Scripts\Services\KeybindSystem\KeybindSystem.cs" />
-    <Compile Include="Assets\Scripts\Extensions\Collections\InsertList.cs" />
-    <Compile Include="Assets\Scripts\Extensions\TraceExtensions.cs" />
-    <Compile Include="Assets\Scripts\Installers\ProjectInstaller\ProjectInstaller.cs" />
-    <Compile Include="Assets\Scripts\Components\Player\PlayerEntity.cs" />
-    <Compile Include="Assets\Scripts\Components\Prop\Prop.cs" />
-    <Compile Include="Assets\Scripts\Models\KeybindSystem\Keybind.cs" />
-    <Compile Include="Assets\Scripts\Models\EntitySystem\DamageArgs.cs" />
+    <Compile Include="Assets\Plugins\TRN_Gen\Scripts\TRN_Filters.cs" />
+    <Compile Include="Assets\Plugins\TRN_Gen\Scripts\TRN_Noise.cs" />
+    <Compile Include="Assets\Plugins\TRN_Gen\Scripts\TRN_Erosion.cs" />
+    <Compile Include="Assets\Plugins\TRN_Gen\Scripts\TRN_Generator.cs" />
+    <Compile Include="Assets\Plugins\TRN_Gen\Scripts\TRNGen_Heightmap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\TRN_Gen\DOCUMENTATION.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -864,10 +844,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{6F253082-B9F4-AD33-CA6C-A145FF6EACA4}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
     <ProjectReference Include="Zenject-Editor.csproj">
       <Project>{A8DED362-40A3-C4C6-7E75-8CE3F7672114}</Project>
       <Name>Zenject-Editor</Name>

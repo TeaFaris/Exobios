@@ -58,8 +58,6 @@
     <Analyzer Include="E:\Programs\Unity\2022.3.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TRN_Gen\Scripts\Editor\TRN_Editor.cs" />
-    <Compile Include="Assets\TRN_Gen\Scripts\Editor\Erosion_Editor.cs" />
     <Compile Include="Assets\Scripts\Editor\Inspector\ReadOnlyProperty\ReadOnlyDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -905,9 +903,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{6F253082-B9F4-AD33-CA6C-A145FF6EACA4}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{88BA0B45-9AA6-6202-03AF-FF2BAAC34726}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{7CE07BEA-DB58-E571-BDA5-335D5608DA2D}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject-Editor.csproj">
       <Project>{A8DED362-40A3-C4C6-7E75-8CE3F7672114}</Project>
