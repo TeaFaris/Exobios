@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keybinds:
   - {fileID: 11400000, guid: 54d786e88515fc94fb934c188bba97f9, type: 2}
+  - {fileID: 11400000, guid: 0d47f958a1953f446af2f02be5996df7, type: 2}
+  - {fileID: 11400000, guid: 7af38586df77a6e41adeb4b4e4f774bf, type: 2}

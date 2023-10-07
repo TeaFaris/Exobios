@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269188d15223bdb41981643c714b65c9, type: 3}
   m_Name: Rotate
   m_EditorClassIdentifier: 
-  DefaultKey: 0
-  ActionCode: 
+  DefaultKey: 114
+  ActionCode: Rotate
