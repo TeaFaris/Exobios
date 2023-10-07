@@ -4,14 +4,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New " + nameof(Keybind), menuName = nameof(Keybind))]
 public sealed class Keybind : ScriptableObject
 {
-    [SerializeField]
-    public readonly KeyCode DefaultKey;
+    public KeyCode DefaultKey;
 
-    [SerializeField, ReadOnlyProperty]
+    [field: SerializeField, ReadOnlyProperty]
     public KeyCode? Key { get; private set; } = null;
 
-    [SerializeField]
-    public readonly string ActionCode;
+    public string ActionCode;
 
     public Keybind(string actionCode, KeyCode defaultKey)
     {
@@ -47,19 +45,19 @@ public sealed class Keybind : ScriptableObject
 
         if (IsKeyDown)
         {
-            KeyDown.Invoke(this, EventArgs.Empty);
+            KeyDown?.Invoke(this, EventArgs.Empty);
         }
         if (IsKeyUp)
         {
-            KeyUp.Invoke(this, EventArgs.Empty);
+            KeyUp?.Invoke(this, EventArgs.Empty);
         }
         if (IsKeyPressed)
         {
-            KeyPressed.Invoke(this, EventArgs.Empty);
+            KeyPressed?.Invoke(this, EventArgs.Empty);
         }
         else
         {
-            KeyNotPressed.Invoke(this, EventArgs.Empty);
+            KeyNotPressed?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -73,19 +71,19 @@ public sealed class Keybind : ScriptableObject
 
         if (IsKeyDown)
         {
-            FixedKeyDown.Invoke(this, EventArgs.Empty);
+            FixedKeyDown?.Invoke(this, EventArgs.Empty);
         }
         if (IsKeyUp)
         {
-            FixedKeyUp.Invoke(this, EventArgs.Empty);
+            FixedKeyUp?.Invoke(this, EventArgs.Empty);
         }
         if (IsKeyPressed)
         {
-            FixedKeyPressed.Invoke(this, EventArgs.Empty);
+            FixedKeyPressed?.Invoke(this, EventArgs.Empty);
         }
         else
         {
-            FixedKeyNotPressed.Invoke(this, EventArgs.Empty);
+            FixedKeyNotPressed?.Invoke(this, EventArgs.Empty);
         }
     }
 }
