@@ -102,7 +102,7 @@ public static class PhysicsExtensions
     }
 
     /// <summary>
-    /// Accelerate, if using for air, set <paramref name="surfaceFriction"/> to 1.
+    /// Accelerate, if using for air, use <see cref="AirAccelerate"/>.
     /// </summary>
     /// <param name="currentVelocity"></param>
     /// <param name="wishDir"></param>
@@ -137,6 +137,35 @@ public static class PhysicsExtensions
         var result = Vector3.zero;
 
         // Adjust velocity.
+        for (int i = 0; i < 3; i++)
+        {
+            result[i] += accelSpeed * wishDir[i];
+        }
+
+        return result;
+    }
+
+    public static Vector3 AirAccelerate(Vector3 velocity, Vector3 wishDir, float wishSpeed, float accel, float airCap, float deltaTime)
+    {
+        var wishSpd = wishSpeed;
+
+        wishSpd = Mathf.Min(wishSpd, airCap);
+
+        var currentSpeed = Vector3.Dot(velocity, wishDir);
+
+        var addSpeed = wishSpd - currentSpeed;
+
+        if (addSpeed <= 0)
+        {
+            return Vector3.zero;
+        }
+
+        var accelSpeed = accel * wishSpeed * deltaTime;
+        
+        accelSpeed = Mathf.Min(accelSpeed, addSpeed);
+
+        var result = Vector3.zero;
+
         for (int i = 0; i < 3; i++)
         {
             result[i] += accelSpeed * wishDir[i];

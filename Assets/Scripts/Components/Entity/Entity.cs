@@ -60,7 +60,7 @@ public abstract class Entity : MonoBehaviour
     /// </summary>
     protected void Awake()
     {
-        
+        SetProperties();
     }
 
     /// <summary>
@@ -77,10 +77,12 @@ public abstract class Entity : MonoBehaviour
     {
         OnEnterCollision.Invoke(this, new CollisionArgs(collision));
     }
+
     protected void OnCollisionExit(Collision collision)
     {
         OnExitCollision.Invoke(this, new CollisionArgs(collision));
     }
+
     protected void OnCollisionStay(Collision collision)
     {
         OnStayCollision.Invoke(this, new CollisionArgs(collision));
@@ -90,6 +92,7 @@ public abstract class Entity : MonoBehaviour
     {
         if (Invulnerable)
         {
+            OnTakeDamage.Invoke(sender, damageArgs);
             return;
         }
 

@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{88BA0B45-9AA6-6202-03AF-FF2BAAC34726}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -58,6 +59,8 @@
     <Analyzer Include="E:\Programs\Unity\2022.3.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Components\Player\PlayerCamera.cs" />
+    <Compile Include="Assets\Resources\Constants\PlayerPrefsConstants.cs" />
     <Compile Include="Assets\Scripts\Components\Entity\Entity.cs" />
     <Compile Include="Assets\Resources\Constants\InputConstants.cs" />
     <Compile Include="Assets\Scripts\Extensions\FlagExtensions.cs" />
@@ -67,13 +70,20 @@
     <Compile Include="Assets\Scripts\Models\EntitySystem\SpawnArgs.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\CollisionArgs.cs" />
     <Compile Include="Assets\Scripts\Extensions\PhysicsExtensions.cs" />
+    <Compile Include="Assets\Scripts\Components\Player\PlayerRigidbody.cs" />
     <Compile Include="Assets\Scripts\Models\KeybindSystem\AxisArgs.cs" />
     <Compile Include="Assets\Scripts\Extensions\VectorExtensions.cs" />
+    <Compile Include="Assets\Resources\Constants\MovementConstants.cs" />
     <Compile Include="Assets\Scripts\Models\Trace\Trace.cs" />
+    <Compile Include="Assets\Scripts\Components\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\DamageSource.cs" />
+    <Compile Include="Assets\Resources\Constants\ActionCodes.cs" />
     <Compile Include="Assets\Scripts\Services\KeybindSystem\KeybindSystem.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Collections\InsertList.cs" />
     <Compile Include="Assets\Scripts\Extensions\TraceExtensions.cs" />
+    <Compile Include="Assets\Scripts\Installers\ProjectInstaller\ProjectInstaller.cs" />
     <Compile Include="Assets\Scripts\Components\Player\PlayerEntity.cs" />
+    <Compile Include="Assets\Scripts\Components\Prop\Prop.cs" />
     <Compile Include="Assets\Scripts\Models\KeybindSystem\Keybind.cs" />
     <Compile Include="Assets\Scripts\Models\EntitySystem\DamageArgs.cs" />
   </ItemGroup>
