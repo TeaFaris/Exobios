@@ -106,7 +106,7 @@ public class EntityRigidbody : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.1f);
 
         for (int i = 0; i < contactPointsTrace.Count; i++)
         {

@@ -13,9 +13,12 @@ public sealed class PlayerController : MonoBehaviour
 
     private Transform objectHeldPoint;
 
+    private Vector3 sensitivity = Vector3.zero;
+
     KeybindSystem keybindSystem;
     PlayerEntity playerEntity;
     PlayerRigidbody playerRigidbody;
+    PlayerCamera playerCamera;
     Camera _camera;
 
     [Inject]
@@ -28,7 +31,18 @@ public sealed class PlayerController : MonoBehaviour
     {
         playerEntity = GetComponent<PlayerEntity>();
         playerRigidbody = GetComponent<PlayerRigidbody>();
+        playerCamera = GetComponent<PlayerCamera>();
         _camera = GetComponentInChildren<Camera>();
+
+        sensitivity = new Vector3(
+            #if UNITY_EDITOR
+                20,
+                20
+            #else
+                PlayerPrefs.GetFloat(PlayerPrefsConstants.Sensitivity),
+                PlayerPrefs.GetFloat(PlayerPrefsConstants.Sensitivity)
+            #endif
+            );
 
         objectHeldPoint = new GameObject(nameof(objectHeldPoint)).transform;
         objectHeldPoint.parent = _camera.transform;
@@ -37,11 +51,63 @@ public sealed class PlayerController : MonoBehaviour
         keybindSystem[ActionCodes.Use].KeyDown += OnUseDown;
         keybindSystem[ActionCodes.Use].KeyUp += OnUseUp;
         keybindSystem[ActionCodes.Use].FixedKeyPressed += OnUsePressed;
+
+        keybindSystem[ActionCodes.Rotate].KeyDown += RotateDown;
+        keybindSystem.MouseAxisChangedFixedUpdate += RotatePressed;
+        keybindSystem[ActionCodes.Rotate].KeyUp += RotateUp;
     }
 
     private void FixedUpdate()
     {
         UseUpdate();
+    }
+
+    private void RotateDown(object sender, System.EventArgs e)
+    {
+        if(holdingProp == null)
+        {
+            return;
+        }
+
+        var propRigid = holdingProp.GetComponent<Rigidbody>();
+
+        rotateMode = true;
+        playerCamera.LockCameraRotation = true;
+
+        previousAngularDrag = propRigid.angularDrag;
+        propRigid.angularDrag = MovementConstants.DragPower / propRigid.mass;
+    }
+
+    private void RotatePressed(object sender, AxisArgs e)
+    {
+        if (!rotateMode)
+        {
+            return;
+        }
+
+        var propRigid = holdingProp.GetComponent<Rigidbody>();
+
+        float x = Mathf.Clamp(-e.X * sensitivity.x, -20f, 20f);
+        float y = Mathf.Clamp(-e.Y * sensitivity.y, -20f, 20f);
+
+        var force = new Vector3(y, x, 0);
+
+        propRigid.AddTorque(force, ForceMode.Force);
+    }
+
+    private void RotateUp(object sender, System.EventArgs e)
+    {
+        if (holdingProp == null)
+        {
+            return;
+        }
+        
+        var propRigid = holdingProp.GetComponent<Rigidbody>();
+
+        propRigid.angularDrag = previousAngularDrag;
+
+        rotateMode = false;
+        playerCamera.LockCameraRotation = false;
     }
 
     private void UseUpdate()
@@ -172,4 +238,6 @@ public sealed class PlayerController : MonoBehaviour
             DropProp();
         }
     }
+
+
 }
