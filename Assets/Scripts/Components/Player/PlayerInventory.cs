@@ -6,6 +6,8 @@ public sealed class PlayerInventory : MonoBehaviour
 {
 	ItemRepository itemRepository;
 
+	[SerializeField]
+	[ReadOnlyProperty]
 	private Item[] items;
 
 	[Inject]

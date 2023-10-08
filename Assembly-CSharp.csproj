@@ -80,8 +80,8 @@
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Mesh Simplifier\Runtime\SimplificationOptions.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ExtensionSystem\Compatible\MassiveCloudGX.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Utils\ProgressBar.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ResourcesSystem\ResourceProtoGameObject.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ExtensionSystem\TemplateFrame.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ResourcesSystem\ResourceProtoGameObject.cs" />
     <Compile Include="Assets\Scripts\Components\Player\PlayerCamera.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Lighting System\GaiaShaderID.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Unity\Terrain Tools\Erosion\IBrushUIGroup.cs" />
@@ -307,21 +307,21 @@
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Mesh Simplifier\Runtime\Math\Vector3d.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\API\GaiaAPI.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ResourcesSystem\ResourceProtoTree.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MaskSystem\BakedMaskCache.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Scripts\Unity\Terrain Tools\Erosion\ErosionUtility.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MaskSystem\BakedMaskCache.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Utils\TimedInstance.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\SessionSystem\GaiaSession.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Attributes\PreviewTextureAttribute.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Unity\Terrain Tools\Erosion\TerrainToolGUIHelper.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MaskSystem\ImageMask.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Photo Mode\ScreenshotSavedManager.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MaskSystem\ImageMask.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Lighting System\GaiaGlobal.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\HDRP Time Of Day\Scripts\Weather Effects\WeatherWindSyncController.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Mesh Simplifier\Runtime\Math\MathHelper.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MaskSystem\GaiaNoiseSettings.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Weather\VFX\Scripts\RandomMaterialSelector.cs" />
-    <Compile Include="Assets\Scripts\Services\KeybindSystem\KeybindSystem.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\HDRP Time Of Day\Scripts\HDRPTimeOfDayProfile.cs" />
+    <Compile Include="Assets\Scripts\Services\KeybindSystem\KeybindSystem.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Weather\VFX\Scripts\RandomMaterialSelector.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Weather\VFX\Scripts\ThunderStrike.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Scripts\MultiTerrainSystem\RigidbodyWaitForTerrainLoad.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\SpawningSystem\BaseTerrainSettings.cs" />
@@ -345,9 +345,9 @@
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Photo Mode\PhotoModeColorPicker.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ResourcesSystem\ResourceProtoDetail.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Lighting System\PWSkyPostProcessingManager.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Mesh Simplifier\Runtime\BlendShape.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\SpawningSystem\BiomePreset.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Unity\Terrain Tools\Noise\NoiseSettingsGUI.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Mesh Simplifier\Runtime\BlendShape.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Asset Samples\Standard Assets\Utility\FOVKick.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Asset Samples\Standard Assets\Utility\CurveControlledBob.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Utils\OpenInFileBrowser.cs" />
@@ -796,20 +796,20 @@
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
       <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
+    <Reference Include="PWCommon5DLL">
+      <HintPath>Assets\Procedural Worlds\Frameworks\Common5\PWCommon5DLL.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="PWCommon5DLL">
-      <HintPath>Assets\Procedural Worlds\Frameworks\Common5\PWCommon5DLL.dll</HintPath>
-    </Reference>
     <Reference Include="ProceduralWorlds.Flora.Core">
       <HintPath>Assets\Procedural Worlds\Flora\Scripts\Core\ProceduralWorlds.Flora.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>E:\Programs\Unity\2022.3.5f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

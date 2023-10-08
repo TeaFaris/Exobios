@@ -60,14 +60,14 @@
   <ItemGroup>
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Scene Managment\Editor\GaiaSceneManagement.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Lighting System\Editor\UIConfigurationEditor.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\WindManagerEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\GaiaGrassMaskExporterEditor.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\WindManagerEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Scene Managment\Editor\CommandBufferManagerEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Water System\Reflections\Editor\GaiaPlanarReflectionsHDRPEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Weather\VFX\Scripts\Editor\ProceduralWorldsGlobalWeatherEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Lighting System\Editor\ReflectionProbeEditorUtils.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MaskSystem\Editor\CollisionMaskListEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\ExportTerrain.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MaskSystem\Editor\CollisionMaskListEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ValueAdds\Location System\Editor\LocationManagerEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\StampingSystem\Editor\StamperAutoSpawnerListEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\PWApp.cs" />
@@ -91,8 +91,8 @@
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\StampingSystem\Editor\WorldMapStampTokenEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Mesh Simplifier\Editor\LODGeneratorHelperEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\GaiaMaintenanceProfileEditor.cs" />
-    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MultiTerrainSystem\Editor\Gaia2TopPanel.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\UnityPipelineProfileEditor.cs" />
+    <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\MultiTerrainSystem\Editor\Gaia2TopPanel.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Editor\PackageInstallerUtils.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Scripts\MultiTerrainSystem\Editor\WorldOriginEditor.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Scripts\Utils\Editor\GaiaAudioZoneManagerEditor.cs" />
@@ -484,6 +484,9 @@
     <Reference Include="Unity.VisualScripting.YamlDotNet">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="PWCommon5EditorDLL">
+      <HintPath>Assets\Procedural Worlds\Frameworks\Common5\Editor\PWCommon5EditorDLL.dll</HintPath>
+    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
@@ -505,11 +508,17 @@
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
       <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
+    <Reference Include="PWCommon5DLL">
+      <HintPath>Assets\Procedural Worlds\Frameworks\Common5\PWCommon5DLL.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="PWCleanUp4EditorDLL">
+      <HintPath>Assets\Procedural Worlds\Frameworks\CleanUp4\Editor\PWCleanUp4EditorDLL.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
@@ -517,20 +526,11 @@
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.5\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="PWCommon5DLL">
-      <HintPath>Assets\Procedural Worlds\Frameworks\Common5\PWCommon5DLL.dll</HintPath>
-    </Reference>
-    <Reference Include="PWCommon5EditorDLL">
-      <HintPath>Assets\Procedural Worlds\Frameworks\Common5\Editor\PWCommon5EditorDLL.dll</HintPath>
-    </Reference>
     <Reference Include="ProceduralWorlds.Flora.Core">
       <HintPath>Assets\Procedural Worlds\Flora\Scripts\Core\ProceduralWorlds.Flora.Core.dll</HintPath>
     </Reference>
-    <Reference Include="PWCleanUp4EditorDLL">
-      <HintPath>Assets\Procedural Worlds\Frameworks\CleanUp4\Editor\PWCleanUp4EditorDLL.dll</HintPath>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
