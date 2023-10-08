@@ -11,60 +11,44 @@ public static class PhysicsExtensions
     private readonly static Collider[] Colliders = new Collider[MaxCollisions];
     private readonly static Vector3[] Planes = new Vector3[MaxClipPlanes];
 
-    public static void ResolveCollisions(Collider collider, ref Vector3 origin, ref Vector3 velocity)
+    public static void ResolveCollisions(CapsuleCollider capc, ref Vector3 origin, ref Vector3 velocity)
     {
         // manual collision resolving
         int numOverlaps = 0;
-        if (collider is CapsuleCollider)
-        {
-            var capc = collider as CapsuleCollider;
 
-            GetCapsulePoints(capc, origin, out Vector3 point1, out Vector3 point2);
+        GetCapsulePoints(capc, origin, out Vector3 point1, out Vector3 point2);
 
-            numOverlaps = Physics.OverlapCapsuleNonAlloc(
-                    point1,
-                    point2,
-                    capc.radius,
-                    Colliders,
-                    LayerMask.GetMask("Default"),
-                    QueryTriggerInteraction.Ignore
-                );
-        }
-        else if (collider is BoxCollider)
-        {
-            numOverlaps = Physics.OverlapBoxNonAlloc(
-                    origin,
-                    collider.bounds.extents,
-                    Colliders,
-                    Quaternion.identity,
-                    LayerMask.GetMask("Default"),
-                    QueryTriggerInteraction.Ignore
-                );
-        }
+        numOverlaps = Physics.OverlapCapsuleNonAlloc(
+                point1,
+                point2,
+                capc.radius,
+                Colliders,
+                LayerMask.GetMask("Default", "PW_Object_Small", "PW_Object_Medium", "PW_Object_Large")
+            );
 
         for (int i = 0; i < numOverlaps; i++)
         {
-            if (Colliders[i] == collider)
+            if (Colliders[i] == capc)
             {
                 continue;
             }
 
             bool penetrated = Physics.ComputePenetration(
-                                    collider,
+                                    capc,
                                     origin,
                                     Quaternion.identity,
                                     Colliders[i],
                                     Colliders[i].transform.position,
                                     Colliders[i].transform.rotation,
-                                    out Vector3 Direction,
-                                    out float Distance
+                                    out Vector3 direction,
+                                    out float distance
                                 );
 
             if (penetrated)
             {
-                Direction.Normalize();
-                Vector3 penetrationVector = Direction * Distance;
-                Vector3 velocityProjected = Vector3.Project(velocity, -Direction);
+                direction.Normalize();
+                Vector3 penetrationVector = direction * distance;
+                Vector3 velocityProjected = Vector3.Project(velocity, -direction);
                 velocityProjected.y = 0; // don't touch y velocity, we need it to calculate fall damage elsewhere
                 origin += penetrationVector;
                 velocity -= velocityProjected;

@@ -200,6 +200,7 @@
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\ExtensionSystem\Compatible\ThirdPersonController.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Photo Mode\PhotoModeUtils.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Gaia Pro\Scripts\Utils\GaiaAudioZone.cs" />
+    <Compile Include="Assets\Scripts\Components\World Gen\WorldGenerator.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\SpawningSystem\Spawner.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\Water System\DisableUnderwaterFXTrigger.cs" />
     <Compile Include="Assets\Procedural Worlds\Gaia\Scripts\SessionSystem\UndoRedoOperationSettings.cs" />

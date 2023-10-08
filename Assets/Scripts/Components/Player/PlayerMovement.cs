@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -41,8 +42,19 @@ public sealed class PlayerMovement : MonoBehaviour
         origin = transform.position;
 
         keybindSystem[ActionCodes.Jump].KeyDown += Jump;
+        keybindSystem[ActionCodes.Jump].KeyPressed += Swim;
 
         keybindSystem.AxisChangedFixedUpdate += MovementInput;
+    }
+
+    private void Swim(object sender, System.EventArgs e)
+    {
+        PhysicsExtensions.GetCapsulePoints(_collider, origin, out var point1, out var point2);
+
+        if (Physics.CheckCapsule(point1, point2, _collider.radius / 2f, LayerMask.GetMask("Water")))
+        {
+            velocity.y = player.JumpPower / 3f;
+        }
     }
 
     private void FixedUpdate()
@@ -67,13 +79,19 @@ public sealed class PlayerMovement : MonoBehaviour
 
     private void CheckGround()
     {
-        Collider[] colliders = Physics.OverlapSphere(groundCheckPosition.position, _collider.radius);
+        Collider[] colliders = new Collider[16];
+        Physics.OverlapSphereNonAlloc(
+                groundCheckPosition.position,
+                _collider.radius,
+                colliders,
+                LayerMask.GetMask("Default", "PW_Object_Small", "PW_Object_Medium", "PW_Object_Large")
+            );
 
         for (int i = colliders.Length - 1; i >= 0; i--)
         {
             Collider collider = colliders[i];
 
-            if (collider != _collider)
+            if (collider != null && collider != _collider)
             {
                 _playerRigidbody.SetGround(collider.transform);
                 return;
